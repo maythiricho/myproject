@@ -306,12 +306,12 @@
           <h3>Your Travel Bucket</h3>
         </div>
 
-        <nav class="header-navabar">
+        <<nav class="header-navabar">
           <ul>
             <a href="../index.html">Home</a>
             <li><a href="../destination.html">Destinations</a></li>
-            <li><a href="./aboutus.html">About Us</a></li>
-            <li><a href="./contactus.html">Contact Us</a></li>
+            <li><a href="../aboutus.html">About Us</a></li>
+            <li><a href="../contactus.html">Contact Us</a></li>
           </ul>
         </nav>
         <div class="hamburger">
@@ -321,37 +321,24 @@
         </div>
         <div class="topbar">
           <img
-            id="avatar-img"
+          id="avatar-img"
             class="avatar-icon"
             src="photos/default-avatar.png"
             alt="Profile Picture"
             onclick="toggleDropdown()"
-            style="
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              cursor: pointer;
-              object-fit: cover;
-            "
+            style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; object-fit: cover;"
           />
-
+  
           <div class="dropdown" id="dropdownMenu">
             <div class="dropdown-header">
               <strong id="dropdown-username">Username</strong>
               <small id="dropdown-email">Email</small>
-            </div>
+            </div>            
             <a href="profile.html"
-              ><i class="fa-solid fa-user" style="color: #b197fc"></i>Your
-              Profile</a
+              ><i class="fa-solid fa-user" style="color: #b197fc"></i>Your Profile</a
             >
-            <a href="yourbucket.html"
-              ><i
-                class="fa-solid fa-magnifying-glass"
-                style="color: #f06292"
-              ></i
-              >Your Bucket</a
-            >
-
+            <a href="yourbucket.html"><i class="fa-solid fa-magnifying-glass" style="color: #f06292"></i>Your Bucket</a>
+  
             <button class="logout-btn">Log Out</button>
           </div>
         </div>
@@ -455,52 +442,49 @@
 
   
 
-       // --- Dropdown Menu ---
-       function toggleDropdown() {
-          document.getElementById("dropdownMenu").classList.toggle("active");
-        }
-      
-        window.addEventListener("click", function (e) {
-          const dropdown = document.getElementById("dropdownMenu");
-          const avatarImg = document.getElementById("avatar-img");
-          if (!dropdown.contains(e.target) && !avatarImg.contains(e.target)) {
-            dropdown.classList.remove("active");
-          }
-        });
-      
-        // --- Load Logged In User Info ---
-        function loadUserInfo() {
-          const username = localStorage.getItem("currentUser");
-          if (!username) {
-            window.location.href = "login.html"; // If no user, go to login
-            return;
-          }
-      
-          const userData = localStorage.getItem(username);
-          const user = JSON.parse(userData);
-      
-          document.getElementById("dropdown-username").innerText = username;
-          document.getElementById("dropdown-email").innerText = user.email;
-      
-          const avatarImg = document.getElementById("avatar-img");
-          if (user.profilePic && avatarImg) {
-            avatarImg.src = user.profilePic; // Set profile picture!
-          }
-        }
-      
-        // Call loadUserInfo() when page loads
-        window.onload = function () {
-          loadUserInfo();
-        };
-      
-        // --- Logout ---
-        document
-          .querySelector(".logout-btn")
-          .addEventListener("click", function () {
-            localStorage.removeItem("currentUser");
-            localStorage.setItem("toastMessage", "Logged out successfully!");
-            window.location.href = "login.html";
-          });
+   // --- Dropdown Menu ---
+   function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("active");
+}
+
+window.addEventListener("click", function (e) {
+  const dropdown = document.getElementById("dropdownMenu");
+  const avatarImg = document.getElementById("avatar-img");
+if (!dropdown.contains(e.target) && !avatarImg.contains(e.target)) {
+  dropdown.classList.remove("active");
+}
+});
+
+  // --- Load Logged In User Info ---
+  function loadUserInfo() {
+    const username = localStorage.getItem("currentUser");
+    if (!username) {
+      window.location.href = "login.html"; // If no user, go to login
+      return;
+    }
+
+    const userData = localStorage.getItem(username);
+    const user = JSON.parse(userData);
+
+    document.getElementById("dropdown-username").innerText = username;
+    document.getElementById("dropdown-email").innerText = user.email;
+
+    const avatarImg = document.getElementById("avatar-img");
+    if (user.profilePic && avatarImg) {
+      avatarImg.src = user.profilePic; // Set profile picture!
+    }
+  }
+
+  // Call loadUserInfo() when page loads
+  window.onload = function() {
+    loadUserInfo();
+  };
+
+  // --- Logout ---
+  document.querySelector(".logout-btn").addEventListener("click", function() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+  });
 </script>
   </body>
 </html>
