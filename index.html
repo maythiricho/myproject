@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Home</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo-header">
+          <img
+            src="photos/main-logo.GIF"
+            style="width: 55px; height: 42px"
+            alt="Travel Logo"
+          />
+          <h3>Your Travel Bucket</h3>
+        </div>
+         <nav class="header-navabar">
+          <ul>
+            <a href="./index.html">Home</a>
+            <li><a href="./destination.html">Destinations</a></li>
+            <li><a href="./aboutus.html">About Us</a></li>
+            <li><a href="./contactus.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+  
+        </div>
+        <div class="topbar">
+          <img
+          id="avatar-img"
+            class="avatar-icon"
+            src="photos/default-avatar.png"
+            alt="Profile Picture"
+            onclick="toggleDropdown()"
+            style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; object-fit: cover;"
+          />
+
+          <div class="dropdown" id="dropdownMenu">
+            <div class="dropdown-header">
+              <strong id="dropdown-username">Username</strong>
+              <small id="dropdown-email">Email</small>
+            </div>            
+            <a href="profile.html"
+              ><i class="fa-solid fa-user" style="color: #b197fc"></i>Your Profile</a
+            >
+            <a href="yourbucket.html"><i class="fa-solid fa-magnifying-glass" style="color: #f06292"></i>Your Bucket</a>
+
+            <button class="logout-btn">Log Out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main style="background-color: rgb(239, 240, 243)">
+      <div class="homepage-hero">
+        <!-- Animated Text -->
+        <h1 id="animated-text" class="cute-title">
+         Where will you go today <span id="cursor">|</span>
+        </h1>
+
+        <!-- Background Decorations -->
+        <div class="cloud" style="top: 20%; left: 10%"></div>
+        <div class="cloud" style="top: 60%; left: 70%"></div>
+
+        <!-- Background Stars -->
+        <div class="stars">
+          <div class="star" style="top: 10%; left: 20%"></div>
+          <div class="star" style="top: 30%; left: 80%"></div>
+          <div class="star" style="top: 70%; left: 40%"></div>
+          <div class="star" style="top: 50%; left: 60%"></div>
+          <div class="star" style="top: 80%; left: 10%"></div>
+          <div class="star" style="top: 60%; left: 90%"></div>
+        </div>
+      </div>
+      <div class="img1">
+        <img src="./photos/finalgif.gif" alt="" />
+        <div class="text-block">
+          <h1>Don't know where to go?</h1>
+          <p>
+            No worries — that's what we're here for! 🌍✨<br />
+            Whether you're dreaming of sun-soaked beaches, bustling city streets, or quiet mountain escapes, 
+            we'll help you discover the perfect destination. Just spin the wheel or browse by category, 
+            and let your next adventure find you!
+          </p>
+          <a href="./destination.html" class="exlpore">Explore</a>
+        </div>
+      </div>
+      <section class="aboutus-features">
+        <h2 class="features-title">🚀 What You Can Do Here</h2>
+        <div class="features-content">
+          <div class="feature-box">
+            <h3>🌍 Explore Countries</h3>
+            <p>
+              Browse different countries and discover detailed information about
+              each destination.
+            </p>
+          </div>
+          <div class="feature-box">
+            <h3>📌 Save Your Favorites</h3>
+            <p>
+              Save the countries and places you want to visit to your personal
+              travel bucket list.
+            </p>
+          </div>
+          <div class="feature-box">
+            <h3>✅ Mark Places You've Visited</h3>
+            <p>
+              Track your travels by marking the destinations you've already
+              explored.
+            </p>
+          </div>
+          <div class="feature-box">
+            <h3>🔥 Discover Popular Spots</h3>
+            <p>
+              See what locations are famous for — food, adventure, relaxation,
+              and more!
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="trending">
+        <h1>✨ Trending Destinations ✨</h1>
+        <p>Find your next happy place! 🏝️</p>
+        <div class="destinations-1">
+          <div
+            class="destination"
+            style="background-image: url('./photos/Korea/Jeju.jpg')"
+          >
+            <div class="overlay">
+              <h2>Jeju Island</h2>
+              <p>Korea</p>
+            </div>
+          </div>
+          <div
+            class="destination"
+            style="background-image: url('./photos/Japan/Fuji.jpg')"
+          >
+            <div class="overlay">
+              <h2>Fuji</h2>
+              <p>Japan</p>
+            </div>
+          </div>
+          <div
+            class="destination"
+            style="background-image: url('./photos/Myanmar/bagan.jpg')"
+          >
+            <div class="overlay">
+              <h2>Bagan</h2>
+              <p>Myanmar</p>
+            </div>
+          </div>
+        </div>
+        <div class="destinations-2">
+          <div
+            class="destination"
+            style="background-image: url('./photos/Thailand/phuket.jpg')"
+          >
+            <div class="overlay">
+              <h2>Phuket</h2>
+              <p>Thailand</p>
+            </div>
+          </div>
+          <div
+            class="destination"
+            style="background-image: url('./photos/China/Beijing.jpg')"
+          >
+            <div class="overlay">
+              <h2>Beijing</h2>
+              <p>China</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="trip-planner">
+        <h1>🌟 Quick and Easy Trip Planner 🌟</h1>
+        <p>Pick a vibe and explore the top destinations! ✈️</p>
+
+        <div class="vibe-buttons">
+          <button class="vibe-btn" data-category="all">
+            <i class="fa-solid fa-globe"></i> All
+          </button>
+          <button class="vibe-btn active" data-category="city">
+            <i class="fa-solid fa-building"></i> City
+          </button>
+          <button class="vibe-btn" data-category="beach">
+            <i class="fa-solid fa-umbrella-beach"></i> Beach
+          </button>
+          <button class="vibe-btn" data-category="relax">
+            <i class="fa-solid fa-spa"></i> Relax
+          </button>
+        </div>
+
+        <div class="destination-list">
+          <div class="destination-card" data-category="city">
+            <img src="./photos/Myanmar/bagan.jpg" alt="bagan" />
+            <h3>Bagan</h3>
+            <div class="tags">
+              <span class="place-tag">Historical</span>
+              <span class="place-tag">Myanmar</span>
+            </div>
+          </div>
+          <div class="destination-card" data-category="beach">
+            <img src="./photos/Korea/Jeju.jpg" alt="Jeju" />
+            <h3>Jeju Island</h3>
+            <div class="tags">
+              <span class="place-tag">Beach</span>
+              <span class="place-tag">Korea</span>
+            </div>
+          </div>
+          <div class="destination-card" data-category="city">
+            <img src="./photos/China/Beijing.jpg" alt="beijing" />
+            <h3>Beijing</h3>
+            <div class="tags">
+              <span class="place-tag">City</span>
+              <span class="place-tag">China</span>
+            </div>
+          </div>
+          <div class="destination-card" data-category="relax">
+            <img
+              src="./photos/Singapore/universal-studio.webp"
+              alt="universal-studio"
+            />
+            <h3>Universal Studio</h3>
+            <div class="tags">
+              <span class="place-tag">Fun</span>
+              <span class="place-tag">Singapore</span>
+            </div>
+          </div>
+          <div class="destination-card" data-category="beach">
+            <img src="./photos/Thailand/phuket.jpg" alt="phuket" />
+            <h3>Phuket Beach</h3>
+            <div class="tags">
+              <span class="place-tag">Beach</span>
+              <span class="place-tag">Thailand</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="cute-footer">
+      <div class="footer-content">
+        <p>Made with ❤️ and too much ☕</p>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <p class="footer-bottom-text">
+          © 2025 Your Travel Bucket. Adventure awaits! 🚀
+        </p>
+      </div>
+    </footer>
+  </body>
+  <script>
+    // --- Dropdown Profile ---
+    function toggleDropdown() {
+      document.getElementById("dropdownMenu").classList.toggle("active");
+    }
+
+    window.addEventListener("click", function (e) {
+      const dropdown = document.getElementById("dropdownMenu");
+      const avatar = document.querySelector(".avatar");
+      if (!dropdown.contains(e.target) && !avatar.contains(e.target)) {
+        dropdown.classList.remove("active");
+      }
+    });
+
+    // --- Hamburger Menu -- //
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".header-navabar");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    // --- Filter Buttons ---
+    document.addEventListener("DOMContentLoaded", function () {
+      const buttons = document.querySelectorAll(".vibe-btn");
+      const cards = document.querySelectorAll(".destination-card");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+          buttons.forEach((btn) => btn.classList.remove("active")); // Remove "active" from all
+          this.classList.add("active"); // Add "active" to clicked one
+
+          const category = this.getAttribute("data-category");
+
+          cards.forEach((card) => {
+            if (
+              category === "all" ||
+              card.getAttribute("data-category") === category
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    });
+
+    // floating container
+    const destinations = [
+      "Myanmar?",
+      "Korea?",
+      "Japan?",
+      "China?",
+      "Thailand?",
+      "Cambodia?",
+      "Malaysia?",
+      "Indonesia?",
+      "Bhutan?",
+      "India?",
+    ];
+    let count = 0;
+    let index = 0;
+    let currentText = "";
+    let letter = "";
+
+    (function type() {
+      if (count === destinations.length) {
+        count = 0;
+      }
+      currentText = destinations[count];
+      letter = currentText.slice(0, ++index);
+
+      document.getElementById(
+        "animated-text"
+      ).childNodes[0].nodeValue = `Hello! Welcome ❤️ Where will you go today ${letter}`;
+
+      if (letter.length === currentText.length) {
+        count++;
+        index = 0;
+        setTimeout(type, 1500);
+      } else {
+        setTimeout(type, 150);
+      }
+    })();
+
+    // --- Dropdown Menu ---
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("active");
+}
+
+window.addEventListener("click", function (e) {
+  const dropdown = document.getElementById("dropdownMenu");
+  const avatarImg = document.getElementById("avatar-img");
+if (!dropdown.contains(e.target) && !avatarImg.contains(e.target)) {
+  dropdown.classList.remove("active");
+}
+});
+
+// --- Load Logged In User Info ---
+function loadUserInfo() {
+  const username = localStorage.getItem("currentUser");
+  if (!username) {
+    window.location.href = "login.html"; // If no user, go to login
+    return;
+  }
+
+  const userData = localStorage.getItem(username);
+  const user = JSON.parse(userData);
+
+  document.getElementById("dropdown-username").innerText = username;
+  document.getElementById("dropdown-email").innerText = user.email;
+
+  const avatarImg = document.getElementById("avatar-img");
+  if (user.profilePic && avatarImg) {
+    avatarImg.src = user.profilePic; // Set profile picture!
+  }
+}
+
+// Call loadUserInfo() when page loads
+window.onload = function() {
+  loadUserInfo();
+};
+
+// --- Logout ---
+document.querySelector(".logout-btn").addEventListener("click", function() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
+});
+  </script>
+</html>

@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destination</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <div class="logo-header">
+        <img
+          src="photos/main-logo.GIF"
+          style="width: 55px; height: 42px"
+          alt="Travel Logo"
+        />
+        <h3>Your Travel Bucket</h3>
+      </div>
+
+      <nav class="header-navabar">
+        <ul>
+          <a href="./index.html">Home</a>
+          <li><a href="destination.html">Destinations</a></li>
+          <li><a href="./aboutus.html">About Us</a></li>
+          <li><a href="./contactus.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="topbar">
+        <img
+        id="avatar-img"
+          class="avatar-icon"
+          src="photos/default-avatar.png"
+          alt="Profile Picture"
+          onclick="toggleDropdown()"
+          style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; object-fit: cover;"
+        />
+
+        <div class="dropdown" id="dropdownMenu">
+          <div class="dropdown-header">
+            <strong id="dropdown-username">Username</strong>
+            <small id="dropdown-email">Email</small>
+          </div>            
+          <a href="profile.html"
+            ><i class="fa-solid fa-user" style="color: #b197fc"></i>Your Profile</a
+          >
+          <a href="yourbucket.html"><i class="fa-solid fa-magnifying-glass" style="color: #f06292"></i>Your Bucket</a>
+
+          <button class="logout-btn">Log Out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+
+    <section class="hero">
+      <!-- <img src="./photos/airplane.gif" alt="Travel Inspiration"
+            style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);"> -->
+      <h1 class="fun-title">
+        Let's Find Your Happy Place! <span class="sparkle">✨</span>
+      </h1>
+      <p class="cute-tagline">
+        Discover amazing destinations and start packing your dreams!
+      </p>
+    </section>
+    <div class="filter-search-container">
+      <!-- <h2 class="section-title">🌎 Explore Popular Places</h2> -->
+
+      <div class="mode-buttons">
+        <button class="mode-btn active" id="searchModeBtn">
+          <i class="fa-solid fa-magnifying-glass"></i> Search Destinations
+        </button>
+        <button class="mode-btn" id="randomModeBtn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          Surprise Me!
+        </button>
+      </div>
+
+      <div id="searchSection">
+        <input type="text" id="searchInput" placeholder="Search by country..." />
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-category="all">
+            <i class="fa-solid fa-globe"></i> All
+          </button>
+          <button class="filter-btn" data-category="city">
+            <i class="fa-solid fa-building"></i> City
+          </button>
+          <button class="filter-btn" data-category="historical">
+            <i class="fa-solid fa-landmark"></i> Historical
+          </button>
+          <button class="filter-btn" data-category="beach">
+            <i class="fa-solid fa-umbrella-beach"></i> Beach
+          </button>
+          <button class="filter-btn" data-category="fun">
+            <i class="fa-solid fa-spa"></i> fun
+          </button>
+          <button class="filter-btn" data-category="nature">
+            <i class="fa-solid fa-tree"></i> Nature
+          </button>
+        </div>
+      </div>
+
+      <div id="randomSection" style="display: none">
+        <section class="spin-section">
+          <!-- <p style="color: #81c784;">Spin your next destination! 🏖️</p> -->
+          <div class="wheel-container">
+            <canvas id="wheel" width="250" height="250"></canvas> <br />
+            <button onclick="spinWheel()" id="spinButton">
+              <i class="fa-solid fa-fan"></i> Spin Me
+            </button>
+            <div id="result"></div>
+          </div>
+
+          <!-- NEW: Filter buttons under the wheel -->
+          <div class="filter-buttons random-filters">
+            <button class="filter-btn active" data-category="all">
+              <i class="fa-solid fa-globe"></i> All
+            </button>
+            <button class="filter-btn" data-category="city">
+              <i class="fa-solid fa-building"></i> City
+            </button>
+            <button class="filter-btn" data-category="historical">
+              <i class="fa-solid fa-landmark"></i>Historical
+            </button>
+            <button class="filter-btn" data-category="beach">
+              <i class="fa-solid fa-umbrella-beach"></i> Beach
+            </button>
+            <button class="filter-btn" data-category="adventure">
+              <i class="fa-solid fa-spa"></i>Adventure
+            </button>
+            <button class="filter-btn" data-category="nature">
+              <i class="fa-solid fa-tree"></i>Nature
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="card-container">
+      <!-- <h2 class="card-title">Explore a diverse range of popular destinations.</h3> -->
+      <p id="noDataMessage">
+        No popular places found based on your criteria.
+      </p>
+      <div class="place-grid" id="placeGrid">
+        <!-- Your place cards here -->
+       
+        <div class="place-card" data-category="nature" data-country="Japan">
+          <div class="place-image" onclick="goToDetail('../details/fuji.html')">
+
+            <img src="./photos/Japan/Fuji.jpg" alt="Fuji" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/fuji.html')">Fuji</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Beach vibes, blue oceans, and paradise.</p>
+            <div class="tags">
+              <span class="place-tag">Nature</span>
+              <span class="place-tag">Japan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-category="historical" data-country="Myanmar">
+          <div class="place-image" onclick="goToDetail('../details/bagan.html')">
+            <img src="./photos/Myanmar/bagan.jpg" alt="Bagan" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/bagan.html')">Bagan</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Beach vibes, blue oceans, and paradise.</p>
+            <div class="tags">
+              <span class="place-tag">Historical</span>
+              <span class="place-tag">Myanmar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-category="beach" data-country="Thailand">
+          <div class="place-image" onclick="goToDetail('../details/phuket.html')">
+            <img src="./photos/Thailand/phuket.jpg" alt="Bagan" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/phuket.html')">Phuket</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Beach vibes, blue oceans, and paradise.</p>
+            <div class="tags">
+              <span class="place-tag">Beach</span>
+              <span class="place-tag">Thailand</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-category="city" data-country="China">
+          <div class="place-image" onclick="goToDetail('../details/beijing.html')">
+            <img src="./photos/China/Beijing.jpg" alt="Bagan" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/beijing.html')">Beijing</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Beach vibes, blue oceans, and paradise.</p>
+            <div class="tags">
+              <span class="place-tag">City</span>
+              <span class="place-tag">China</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="place-card" data-category="fun" data-country="Singapore">
+          <div class="place-image" onclick="goToDetail('../details/universal-studio.html')">
+            <img src="./photos/Singapore/universal-studio.webp" alt="universal-studio" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/universal-studio.html')">Universal Studio</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Beach vibes, blue oceans, and paradise.</p>
+            <div class="tags">
+              <span class="place-tag">Fun</span>
+              <span class="place-tag">Singapore</span>
+            </div>
+          </div>
+        </div>
+
+          <div class="place-card" data-category="beach" data-country="Korea">
+            <div class="place-image" onclick="goToDetail('../details/jeju.html')">
+              <img src="./photos/Korea/Jeju.jpg" alt="Fuji" />
+            </div>
+            <div class="place-info">
+              <div class="card-header">
+                <div class="card-title">
+                  <h3 onclick="goToDetail('../details/jeju.html')">Jeju Island </h3>
+                  </div>
+                <div class="icon-container">
+                  <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                    <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                  </div>
+                  <div class="check-icon" onclick="toggleSave(this, 'check')">
+                    <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="card-description">Beach vibes, blue oceans, and paradise.</p>
+              <div class="tags">
+                <span class="place-tag">Beach</span>
+                <span class="place-tag">Korea</span>
+              </div>
+            </div>
+          </div>
+
+        <!-- More place cards... -->
+
+        <div class="place-card" data-category="nature" data-country="Nepal">
+          <div class="place-image" onclick="goToDetail('../details/annapurna.html')">
+            <img src="./photos/Napal/annapurna.jpg" alt="Annapurna" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/annapurna.html')">Annapurna</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Himalayan trails and spiritual serenity.</p>
+            <div class="tags">
+              <span class="place-tag">Nature</span>
+              <span class="place-tag">Nepal</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="place-card" data-category="city" data-country="Malaysia">
+          <div class="place-image" onclick="goToDetail('../details/kualalumpur.html')">
+            <img src="./photos/Malaysia/kualalumpur.jpg" alt="Kuala Lumpur" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/kualalumpur.html')">Kuala Lumpur</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Modern skyline and diverse culture.</p>
+            <div class="tags">
+              <span class="place-tag">City</span>
+              <span class="place-tag">Malaysia</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="place-card" data-category="historical" data-country="India">
+          <div class="place-image" onclick="goToDetail('../details/agra.html')">
+            <img src="./photos/India/tajmahal.jpg" alt="Taj Mahal" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/agra.html')">Taj Mahal</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">A timeless symbol of love and legacy.</p>
+            <div class="tags">
+              <span class="place-tag">Historical</span>
+              <span class="place-tag">India</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="place-card" data-category="beach" data-country="Vietnam">
+          <div class="place-image" onclick="goToDetail('../details/halongbay.html')">
+            <img src="./photos/Vietnam/halongbay.jpg" alt="Halong Bay" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/halongbay.html')">Halong Bay</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Mystical islands and emerald waters.</p>
+            <div class="tags">
+              <span class="place-tag">Beach</span>
+              <span class="place-tag">Vietnam</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="place-card" data-category="adventure" data-country="Indonesia">
+          <div class="place-image" onclick="goToDetail('../details/bali.html')">
+            <img src="./photos/Indonesia/bali.jpg" alt="Bali" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/bali.html')">Bali</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Volcano hikes and spiritual retreats.</p>
+            <div class="tags">
+              <span class="place-tag">Adventure</span>
+              <span class="place-tag">Indonesia</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="place-card" data-category="fun" data-country="Thailand">
+          <div class="place-image" onclick="goToDetail('../details/bangkok.html')">
+            <img src="./photos/Thailand/bangkok.jpg" alt="Bangkok" />
+          </div>
+          <div class="place-info">
+            <div class="card-header">
+              <div class="card-title">
+                <h3 onclick="goToDetail('../details/bangkok.html')">Bangkok</h3>
+              </div>
+              <div class="icon-container">
+                <div class="save-icon" onclick="toggleSave(this, 'heart')">
+                  <i class="fa-regular fa-heart" style="color: #f06292"></i>
+                </div>
+                <div class="check-icon" onclick="toggleSave(this, 'check')">
+                  <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+                </div>
+              </div>
+            </div>
+            <p class="card-description">Night markets, temples, and vibrant energy.</p>
+            <div class="tags">
+              <span class="place-tag">Fun</span>
+              <span class="place-tag">Thailand</span>
+            </div>
+          </div>
+        </div>
+
+<div class="place-card" data-category="city" data-country="Myanmar">
+  <div class="place-image" onclick="goToDetail('../details/yangon.html')">
+    <img src="./photos/Myanmar/Yangon.webp" alt="Yangon" />
+  </div>
+  <div class="place-info">
+    <div class="card-header">
+      <div class="card-title">
+        <h3 onclick="goToDetail('../details/yangon.html')">Yangon</h3>
+      </div>
+      <div class="icon-container">
+        <div class="save-icon" onclick="toggleSave(this, 'heart')">
+          <i class="fa-regular fa-heart" style="color: #f06292"></i>
+        </div>
+        <div class="check-icon" onclick="toggleSave(this, 'check')">
+          <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+        </div>
+      </div>
+    </div>
+    <p class="card-description">Golden pagodas and bustling markets.</p>
+    <div class="tags">
+      <span class="place-tag">City</span>
+      <span class="place-tag">Myanmar</span>
+    </div>
+  </div>
+</div>
+
+<div class="place-card" data-category="city" data-country="Korea">
+  <div class="place-image" onclick="goToDetail('../details/seoul.html')">
+    <img src="./photos/Korea/Seoul.jpg" alt="Seoul" />
+  </div>
+  <div class="place-info">
+    <div class="card-header">
+      <div class="card-title">
+        <h3 onclick="goToDetail('../details/seoul.html')">Seoul</h3>
+      </div>
+      <div class="icon-container">
+        <div class="save-icon" onclick="toggleSave(this, 'heart')">
+          <i class="fa-regular fa-heart" style="color: #f06292"></i>
+        </div>
+        <div class="check-icon" onclick="toggleSave(this, 'check')">
+          <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+        </div>
+      </div>
+    </div>
+    <p class="card-description">Trendy streets and ancient palaces.</p>
+    <div class="tags">
+      <span class="place-tag">City</span>
+      <span class="place-tag">Korea</span>
+    </div>
+  </div>
+</div>
+
+<div class="place-card" data-category="fun" data-country="Japan">
+  <div class="place-image" onclick="goToDetail('../details/disneyland.html')">
+    <img src="./photos/Japan/disneyland4.webp" alt="Disneyland Japan" />
+  </div>
+  <div class="place-info">
+    <div class="card-header">
+      <div class="card-title">
+        <h3 onclick="goToDetail('../details/disneyland.html')">Disneyland Japan</h3>
+      </div>
+      <div class="icon-container">
+        <div class="save-icon" onclick="toggleSave(this, 'heart')">
+          <i class="fa-regular fa-heart" style="color: #f06292"></i>
+        </div>
+        <div class="check-icon" onclick="toggleSave(this, 'check')">
+          <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+        </div>
+      </div>
+    </div>
+    <p class="card-description">A magical world for all ages.</p>
+    <div class="tags">
+      <span class="place-tag">Fun</span>
+      <span class="place-tag">Japan</span>
+    </div>
+  </div>
+</div>
+
+<div class="place-card" data-category="nature" data-country="Bhutan">
+  <div class="place-image" onclick="goToDetail('../details/paro.html')">
+    <img src="./photos/Bhutan/paro.jpg" alt="Paro Valley" />
+  </div>
+  <div class="place-info">
+    <div class="card-header">
+      <div class="card-title">
+        <h3 onclick="goToDetail('../details/paro.html')">Paro Valley</h3>
+      </div>
+      <div class="icon-container">
+        <div class="save-icon" onclick="toggleSave(this, 'heart')">
+          <i class="fa-regular fa-heart" style="color: #f06292"></i>
+        </div>
+        <div class="check-icon" onclick="toggleSave(this, 'check')">
+          <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+        </div>
+      </div>
+    </div>
+    <p class="card-description">Peaceful valleys and cliffside temples.</p>
+    <div class="tags">
+      <span class="place-tag">Nature</span>
+      <span class="place-tag">Bhutan</span>
+    </div>
+  </div>
+</div>
+
+<div class="place-card" data-category="beach" data-country="Sri Lanka">
+  <div class="place-image" onclick="goToDetail('../details/mirissa.html')">
+    <img src="./photos/SriLanka/mirissa.jpg" alt="Mirissa" />
+  </div>
+  <div class="place-info">
+    <div class="card-header">
+      <div class="card-title">
+        <h3 onclick="goToDetail('../details/mirissa.html')">Mirissa</h3>
+      </div>
+      <div class="icon-container">
+        <div class="save-icon" onclick="toggleSave(this, 'heart')">
+          <i class="fa-regular fa-heart" style="color: #f06292"></i>
+        </div>
+        <div class="check-icon" onclick="toggleSave(this, 'check')">
+          <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+        </div>
+      </div>
+    </div>
+    <p class="card-description">Golden beaches and whale watching.</p>
+    <div class="tags">
+      <span class="place-tag">Beach</span>
+      <span class="place-tag">Sri Lanka</span>
+    </div>
+  </div>
+</div>
+
+<div class="place-card" data-category="historical" data-country="Cambodia">
+  <div class="place-image" onclick="goToDetail('../details/angkor.html')">
+    <img src="./photos/Cambodia/angkorwat.jpg" alt="Angkor Wat" />
+  </div>
+  <div class="place-info">
+    <div class="card-header">
+      <div class="card-title">
+        <h3 onclick="goToDetail('../details/angkor.html')">Angkor Wat</h3>
+      </div>
+      <div class="icon-container">
+        <div class="save-icon" onclick="toggleSave(this, 'heart')">
+          <i class="fa-regular fa-heart" style="color: #f06292"></i>
+        </div>
+        <div class="check-icon" onclick="toggleSave(this, 'check')">
+          <i class="fa-regular fa-square-check" style="color: #ffca28"></i>
+        </div>
+      </div>
+    </div>
+    <p class="card-description">Temple ruins surrounded by jungle mystery.</p>
+    <div class="tags">
+      <span class="place-tag">Historical</span>
+      <span class="place-tag">Cambodia</span>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+    
+
+    <div class="pagination-container">
+        <button id="prevPage" class="page-btn">Previous</button>
+        <div id="pageNumbers"></div>  <button id="nextPage" class="page-btn">Next</button>
+      </div>
+  </main>
+  <footer class="cute-footer">
+    <div class="footer-content">
+      <!-- <img src="photos/logo.gif" alt="Logo" class="footer-logo" /> -->
+      <p>Made with ❤️ and too much ☕</p>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+      <p class="footer-bottom-text">
+        © 2025 Your Travel Bucket. Adventure awaits! 🚀
+      </p>
+    </div>
+  </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+  // --- Dropdown Profile ---
+  function toggleDropdown() {
+    document.getElementById("dropdownMenu").classList.toggle("active");
+  }
+
+  window.addEventListener("click", function (e) {
+    const dropdown = document.getElementById("dropdownMenu");
+    const avatar = document.querySelector(".avatar");
+    if (!dropdown.contains(e.target) && !avatar.contains(e.target)) {
+      dropdown.classList.remove("active");
+    }
+  });
+ // --- Hamburger Menu --
+ const hamburger = document.querySelector(".hamburger");
+ const navMenu = document.querySelector(".header-navabar");
+
+ hamburger.addEventListener("click", () => {
+   navMenu.classList.toggle("active");
+ });
+
+  // --- Filter Buttons for Places Section ---
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".place-card");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", function () {
+        buttons.forEach((btn) => btn.classList.remove("active")); // Remove "active" from all buttons
+        this.classList.add("active"); // Add "active" to clicked one
+
+        const category = this.getAttribute("data-category");
+
+        cards.forEach((card) => {
+          if (
+            category === "all" ||
+            card.getAttribute("data-category") === category
+          ) {
+            card.style.display = "block"; // Show matching
+          } else {
+            card.style.display = "none"; // Hide others
+          }
+        });
+      });
+    });
+  });
+
+  // --- Global Variables ---
+  const options = [
+    "Thailand",
+    "Korea",
+    "Japan",
+    "China",
+    "Myanmar",
+    "Singapore",
+    "Malaysia",
+    "Indonesia",
+    "India",
+    "Nepal",
+    "Cambodia",
+  ];
+  let startAngle = 0;
+  let spinTimeout = null;
+  let spinAngleStart = 0;
+  let spinTime = 0;
+  let spinTimeTotal = 0;
+  let selectedCountry = "";
+
+  const canvas = document.getElementById("wheel");
+  const ctx = canvas.getContext("2d");
+
+  document.addEventListener("DOMContentLoaded", init);
+
+  // --- Initialization ---
+  function init() {
+    setupEventListeners();
+    drawRouletteWheel();
+    loadSavedPlaces();
+  }
+
+  function setupEventListeners() {
+    const searchInput = document.getElementById("searchInput");
+    const buttons = document.querySelectorAll(".filter-buttons .filter-btn");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setActiveButton(button);
+        filterPlaces();
+      });
+    });
+
+    searchInput.addEventListener("input", () => {
+      selectedCountry = searchInput.value.trim();
+      filterPlaces();
+    });
+
+    document
+      .getElementById("searchModeBtn")
+      .addEventListener("click", () => toggleMode("search"));
+    document
+      .getElementById("randomModeBtn")
+      .addEventListener("click", () => toggleMode("random"));
+  }
+
+  function setActiveButton(activeButton) {
+    document
+      .querySelectorAll(".filter-buttons .filter-btn")
+      .forEach((btn) => btn.classList.remove("active"));
+    activeButton.classList.add("active");
+  }
+
+  // --- Wheel Drawing & Spinning --- 
+  const spinSound = new Audio("sound/coin-upaif-14631.mp3");
+
+  function drawRouletteWheel() {
+    const arc = Math.PI / (options.length / 2);
+    ctx.clearRect(0, 0, 250, 250);
+
+    options.forEach((option, i) => {
+      const angle = startAngle + i * arc;
+      ctx.fillStyle = i % 2 === 0 ? "#aee1f9" : "#fcfdfd";
+
+      ctx.beginPath();
+      ctx.moveTo(125, 125);
+      ctx.arc(125, 125, 125, angle, angle + arc, false);
+      ctx.lineTo(125, 125);
+      ctx.fill();
+
+      drawOptionText(option, angle, arc, 125, 125, 125);
+    });
+  }
+
+  function drawOptionText(option, angle, arc) {
+    ctx.save();
+    ctx.fillStyle = "#363636";
+    ctx.font = " 12px sans-serif";
+    ctx.translate(
+      125 + Math.cos(angle + arc / 2) * 90,
+      125 + Math.sin(angle + arc / 2) * 90
+    );
+    ctx.rotate(angle + arc / 2 + Math.PI / 2);
+    ctx.fillText(option, -ctx.measureText(option).width / 2, 0);
+    ctx.restore();
+  }
+
+  function spinWheel() {
+    spinAngleStart = Math.random() * 3000 + 2000;
+    spinTime = 0;
+    spinTimeTotal = 2000;
+    rotateWheel();
+
+    spinSound.play(); // Play spin sound
+  }
+
+  function rotateWheel() {
+    spinTime += 30;
+    if (spinTime >= spinTimeTotal) {
+      stopRotateWheel();
+      return;
+    }
+    const spinAngle =
+      spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+    startAngle += (spinAngle * Math.PI) / 180;
+    drawRouletteWheel();
+    spinTimeout = setTimeout(rotateWheel, 30);
+  }
+
+  function stopRotateWheel() {
+    clearTimeout(spinTimeout);
+
+    const degrees = (startAngle * 180) / Math.PI + 90;
+    const arcd = 360 / options.length;
+    const index = Math.floor((360 - (degrees % 360)) / arcd);
+    const country = options[index];
+
+    displayResult(country);
+    selectedCountry = country;
+    filterPlaces();
+    launchConfetti();
+  }
+
+  function displayResult(country) {
+    document.getElementById(
+      "result"
+    ).innerHTML = `🎉 You got: <span style="color: #f8835f"; >${country}</span>! 🎉`;
+  }
+
+  // --- Filtering Places ---
+  function filterPlaces() {
+    const activeCategoryBtn = document.querySelector(
+      ".filter-buttons .filter-btn.active"
+    );
+    const placeGrid = document.getElementById("placeGrid");
+    const cards = placeGrid.querySelectorAll(".place-card");
+    const noDataMessage = document.getElementById("noDataMessage");
+    let visibleCardCount = 0;
+
+    if (!activeCategoryBtn) return;
+
+    const activeCategory = activeCategoryBtn
+      .getAttribute("data-category")
+      .toLowerCase();
+    const searchInput = document.getElementById("searchInput");
+    const manualSearchCountry = searchInput
+      ? searchInput.value.trim().toLowerCase()
+      : "";
+
+    cards.forEach((card) => {
+      const cardCategory = card.getAttribute("data-category").toLowerCase();
+      const cardCountry = card.getAttribute("data-country").toLowerCase();
+
+      const matchesCategory =
+        activeCategory === "all" || cardCategory === activeCategory;
+
+      // Check if a country was selected by the spin wheel OR manually searched
+      const matchesCountry =
+        (selectedCountry === "" && manualSearchCountry === "") || // No country selected
+        (selectedCountry !== "" &&
+          cardCountry.includes(selectedCountry.toLowerCase())) || // Matched spin wheel country
+        (manualSearchCountry !== "" &&
+          cardCountry.includes(manualSearchCountry)); // Matched manual search
+
+      const shouldDisplay = matchesCategory && matchesCountry;
+      card.style.display = shouldDisplay ? "block" : "none";
+
+      if (shouldDisplay) {
+        visibleCardCount++;
+      }
+    });
+
+    // Show or hide the "No data" message based on the number of visible cards
+    if (visibleCardCount === 0) {
+      noDataMessage.style.display = "block";
+    } else {
+      noDataMessage.style.display = "none";
+    }
+  }
+
+  // --- Saving / Loading Favorites ---
+  function toggleSave(icon, type) {  // *** HERE'S A KEY FUNCTION TO MODIFY ***
+      const card = icon.closest('.place-card');
+      const name = card.querySelector('h3').innerText.trim();
+      const image = card.querySelector('img').src;
+      const tags = [...card.querySelectorAll('.place-tag')].map(tag => tag.innerText);
+      const username = localStorage.getItem("currentUser"); // Get the currently logged-in user
+      const userData = JSON.parse(localStorage.getItem(username)) || {}; // Get user's saved data
+
+      let savedPlaces = userData.savedPlaces || [];
+      let existing = savedPlaces.find(p => p.name === name);
+
+      if (!existing) {
+        existing = {
+          name,
+          image,
+          tags,
+          isLoved: false,
+          isDone: false
+        };
+        savedPlaces.push(existing);
+      }
+
+      if (type === 'heart') {
+        existing.isLoved = !existing.isLoved;
+      } else if (type === 'check') {
+        existing.isDone = !existing.isDone;
+      }
+
+      // Update icons visually
+      updateIcon(icon, type === 'heart' ? existing.isLoved : existing.isDone, type);
+
+      userData.savedPlaces = savedPlaces;
+      localStorage.setItem(username, JSON.stringify(userData));  // Save under the user's name
+    }
+
+
+    function updateIcon(icon, isActive, iconType) {  // *** HELPER FUNCTION, UPDATE ICONS VISUALLY ***
+      icon.classList.toggle("active", isActive);
+
+      if (iconType === 'heart') {
+        icon.innerHTML = isActive
+          ? `<i class="fa-solid fa-heart" style="color: #f06292;"></i>`
+          : `<i class="fa-regular fa-heart" style="color: #f06292;"></i>`;
+      } else if (iconType === 'check') {
+        icon.innerHTML = isActive
+          ? `<i class="fa-solid fa-square-check" style="color: #ffca28;"></i>`
+          : `<i class="fa-regular fa-square-check" style="color: #ffca28;"></i>`;
+      }
+    }
+
+    function loadSavedPlaces() {  // *** CALL THIS ON PAGE LOAD TO SET INITIAL ICON STATES ***
+      const username = localStorage.getItem("currentUser");
+      if (!username) return; // Exit if no user logged in
+
+      const userData = JSON.parse(localStorage.getItem(username)) || {};
+      const savedPlaces = userData.savedPlaces || [];
+
+      document.querySelectorAll(".save-icon, .check-icon").forEach(icon => {
+        const card = icon.closest('.place-card');
+        const name = card.querySelector('h3').innerText.trim();
+        const place = savedPlaces.find(p => p.name === name);
+
+        if (place) {
+          if (icon.classList.contains('save-icon')) {
+            updateIcon(icon, place.isLoved, 'heart');
+          } else if (icon.classList.contains('check-icon')) {
+            updateIcon(icon, place.isDone, 'check');
+          }
+        }
+      });
+    }
+  // --- UI Mode Switching ---
+  function toggleMode(mode) {
+    const searchSection = document.getElementById("searchSection");
+    const randomSection = document.getElementById("randomSection");
+
+    if (mode === "search") {
+      searchSection.style.display = "block";
+      randomSection.style.display = "none";
+      document.getElementById("searchModeBtn").classList.add("active");
+      document.getElementById("randomModeBtn").classList.remove("active");
+
+      selectedCountry = document.getElementById("searchInput").value.trim();
+      setDefaultCategory(); // <--- Important
+      filterPlaces();
+    } else if (mode === "random") {
+      searchSection.style.display = "none";
+      randomSection.style.display = "block";
+      document.getElementById("randomModeBtn").classList.add("active");
+      document.getElementById("searchModeBtn").classList.remove("active");
+
+      selectedCountry = ""; // Reset country when spinning randomly
+      setDefaultCategory(); // <--- Important
+      filterPlaces();
+    }
+  }
+
+  function setDefaultCategory() {
+    const buttons = document.querySelectorAll(".filter-buttons .filter-btn");
+
+    buttons.forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.getAttribute("data-category").toLowerCase() === "all") {
+        btn.classList.add("active");
+      }
+    });
+  }
+
+  // --- Confetti Launch ---
+  function launchConfetti() {
+    const duration = 2000;
+    const animationEnd = Date.now() + duration;
+    const defaults = {
+      startVelocity: 30,
+      spread: 360,
+      ticks: 60,
+      zIndex: 1000,
+    };
+
+    const interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+      if (timeLeft <= 0) return clearInterval(interval);
+
+      const particleCount = 50 * (timeLeft / duration);
+      confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: Math.random(), y: Math.random() - 0.2 },
+        })
+      );
+    }, 250);
+  }
+
+  // ---Pagination---
+  const placeGrid = document.getElementById('placeGrid');
+  const cards = Array.from(placeGrid.querySelectorAll('.place-card')); // Ensure it's an array
+  const prevPageButton = document.getElementById('prevPage');
+  const nextPageButton = document.getElementById('nextPage');
+  const pageNumbersContainer = document.getElementById('pageNumbers');
+
+  const cardsPerPage = 6;  // <---  Change this to how many cards you want per page
+  let currentPage = 1;
+  let totalPages = Math.ceil(cards.length / cardsPerPage);
+
+  function displayPage(page) {
+    placeGrid.innerHTML = ''; // Clear the grid
+
+    const startIndex = (page - 1) * cardsPerPage;
+    const endIndex = startIndex + cardsPerPage;
+    const pageCards = cards.slice(startIndex, endIndex);
+
+    pageCards.forEach(card => placeGrid.appendChild(card));
+  }
+
+  function updatePaginationButtons() {
+    prevPageButton.disabled = currentPage === 1;
+    nextPageButton.disabled = currentPage === totalPages;
+  }
+
+  function setupPaginationControls() {
+    prevPageButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        displayPage(currentPage);
+        updatePaginationButtons();
+        updateActivePageNumber();
+      }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        displayPage(currentPage);
+        updatePaginationButtons();
+        updateActivePageNumber();
+      }
+    });
+
+    generatePageNumbers();
+    updateActivePageNumber();
+  }
+
+  function generatePageNumbers() {
+    pageNumbersContainer.innerHTML = ''; // Clear existing numbers
+    for (let i = 1; i <= totalPages; i++) {
+      const pageNumber = document.createElement('div');
+      pageNumber.classList.add('page-number');
+      pageNumber.textContent = i;
+      pageNumber.addEventListener('click', () => {
+        currentPage = i;
+        displayPage(currentPage);
+        updatePaginationButtons();
+        updateActivePageNumber();
+      });
+      pageNumbersContainer.appendChild(pageNumber);
+    }
+  }
+
+  function updateActivePageNumber() {
+    const pageNumberElements = document.querySelectorAll('.page-number');
+    pageNumberElements.forEach(num => num.classList.remove('active'));
+
+    const activeNumberElement = pageNumberElements[currentPage - 1];
+    if (activeNumberElement) {
+      activeNumberElement.classList.add('active');
+      activeNumberElement.style.backgroundColor = ''; // Explicitly remove inline background
+      activeNumberElement.style.color = '';           // Explicitly remove inline color
+      activeNumberElement.style.borderRadius = '';    // Explicitly remove inline border-radius
+    }
+  }
+
+  // ---  Initialize ---
+  displayPage(currentPage);
+  updatePaginationButtons();
+  setupPaginationControls();
+
+  // --- Helpers ---
+  function easeOut(t, b, c, d) {
+    t = t / d - 1;
+    return c * (t * t * t + 1) + b;
+  }
+
+  function goToDetail(url) {
+    window.location.href = url;
+  }
+
+   // --- Dropdown Menu ---
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("active");
+}
+
+window.addEventListener("click", function (e) {
+  const dropdown = document.getElementById("dropdownMenu");
+  const avatarImg = document.getElementById("avatar-img");
+if (!dropdown.contains(e.target) && !avatarImg.contains(e.target)) {
+  dropdown.classList.remove("active");
+}
+});
+
+// --- Load Logged In User Info ---
+function loadUserInfo() {
+  const username = localStorage.getItem("currentUser");
+  if (!username) {
+    window.location.href = "login.html"; // If no user, go to login
+    return;
+  }
+
+  const userData = localStorage.getItem(username);
+  const user = JSON.parse(userData);
+
+  document.getElementById("dropdown-username").innerText = username;
+  document.getElementById("dropdown-email").innerText = user.email;
+
+  const avatarImg = document.getElementById("avatar-img");
+  if (user.profilePic && avatarImg) {
+    avatarImg.src = user.profilePic; // Set profile picture!
+  }
+}
+
+// Call loadUserInfo() when page loads
+window.onload = function() {
+  loadUserInfo();
+};
+
+// --- Logout ---
+document.querySelector(".logout-btn").addEventListener("click", function() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
+});
+</script>
+
+</html>
+
+

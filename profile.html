@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <title>Profile</title>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+          <div class="logo-header">
+            <img
+              src="photos/main-logo.GIF"
+              style="width: 55px; height: 42px"
+              alt="Travel Logo"
+            />
+            <h3>Your Travel Bucket</h3>
+          </div>
+          <nav class="header-navabar">
+            <ul>
+              <a href="./index.html">Home</a>
+              <li><a href="../destination.html">Destinations</a></li>
+              <li><a href="./aboutus.html">About Us</a></li>
+              <li><a href="./contactus.html">Contact Us</a></li>
+            </ul>
+          </nav>
+          <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+    
+          </div>
+          <div class="topbar">
+            <img
+            id="avatar-img"
+              class="avatar-icon"
+              src="photos/default-avatar.png"
+              alt="Profile Picture"
+              onclick="toggleDropdown()"
+              style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; object-fit: cover;"
+            />
+  
+            <div class="dropdown" id="dropdownMenu">
+              <div class="dropdown-header">
+                <strong id="dropdown-username">Username</strong>
+                <small id="dropdown-email">Email</small>
+              </div>            
+              <a href="profile.html"
+                ><i class="fa-solid fa-user" style="color: #b197fc"></i>Your Profile</a
+              >
+              <a href="yourbucket.html"><i class="fa-solid fa-magnifying-glass" style="color: #f06292"></i>Your Bucket</a>
+
+              <button class="logout-btn">Log Out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+<main style="background-color: rgb(239, 240, 243); padding: 20px;">
+    <h1 style="text-align:center; margin-bottom: 20px;">👤 Your Profile</h1>
+  
+    <div class="profile-card">
+      <div class="profile-pic-container">
+        <img id="profile-pic" src="photos/default-avatar.png" alt="Profile Picture" class="profile-avatar">
+      </div>
+  
+      <label for="upload-pic" class="profile-btn">Upload New Picture</label>
+      <input type="file" id="upload-pic" accept="image/*" style="display: none;">
+  
+      <h2 id="profile-username">Username</h2>
+      <p id="profile-email">Email</p>
+  
+      <button id="change-password-btn" class="profile-btn">Change Password</button>
+      <button onclick="window.location.href='home.html'" class="profile-btn">🏠 Back to Home</button>
+  
+      <div id="password-form" style="display:none; margin-top:20px;">
+        <h2>Change Password</h2>
+        <input type="password" id="current-password" placeholder="Current Password" class="profile-input">
+        <input type="password" id="new-password" placeholder="New Password" class="profile-input">
+        <input type="password" id="confirm-password" placeholder="Confirm New Password" class="profile-input">
+        <button onclick="updatePassword()" class="profile-btn">Update Password</button>
+      </div>
+    </div>
+  </main>
+  
+
+<div id="toast" class="toast"></div>
+
+<footer class="cute-footer">
+  <div class="footer-content">
+    <p>Made with ❤️ and too much ☕</p>
+    <div class="social-icons">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <p class="footer-bottom-text">
+      © 2025 Your Travel Bucket. Adventure awaits! 🚀
+    </p>
+  </div>
+</footer>
+
+<script>
+// Dropdown logic
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("active");
+}
+
+  // --- Hamburger Menu --
+ const hamburger = document.querySelector(".hamburger");
+ const navMenu = document.querySelector(".header-navabar");
+
+ hamburger.addEventListener("click", () => {
+   navMenu.classList.toggle("active");
+ });
+
+// Load user info
+function loadUserProfile() {
+  const username = localStorage.getItem("currentUser");
+  if (!username) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  const userData = localStorage.getItem(username);
+  const user = JSON.parse(userData);
+
+  document.getElementById("dropdown-username").innerText = username;
+  document.getElementById("dropdown-email").innerText = user.email;
+  document.getElementById("profile-username").innerText = username;
+  document.getElementById("profile-email").innerText = user.email;
+
+  if (user.profilePic) {
+    // Show in profile page
+    document.getElementById("profile-pic").src = user.profilePic;
+
+    // 🔥 Also show in topbar
+    const avatarImg = document.getElementById("avatar-img");
+    if (avatarImg) {
+      avatarImg.src = user.profilePic;
+    }
+  }
+}
+
+
+// Handle upload profile picture
+document.getElementById("upload-pic").addEventListener("change", function(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const base64Image = e.target.result;
+
+    const username = localStorage.getItem("currentUser");
+    const userData = JSON.parse(localStorage.getItem(username));
+
+    userData.profilePic = base64Image;
+    localStorage.setItem(username, JSON.stringify(userData));
+
+    document.getElementById("profile-pic").src = base64Image;
+    document.getElementById("avatar-img").src = base64Image;  // ✅ update topbar too
+    showToast("Profile picture updated!");
+  };
+
+  reader.readAsDataURL(file);
+});
+
+
+// Toast
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
+// Password change
+document.getElementById("change-password-btn").addEventListener("click", function() {
+  document.getElementById("password-form").style.display = "block";
+});
+
+function updatePassword() {
+  const current = document.getElementById("current-password").value;
+  const newPass = document.getElementById("new-password").value;
+  const confirmPass = document.getElementById("confirm-password").value;
+
+  const username = localStorage.getItem("currentUser");
+  const userData = JSON.parse(localStorage.getItem(username));
+
+  if (current !== userData.password) {
+    showToast("Current password incorrect!");
+    return;
+  }
+  if (newPass !== confirmPass) {
+    showToast("New passwords don't match!");
+    return;
+  }
+
+  // Update password
+  userData.password = newPass;
+  localStorage.setItem(username, JSON.stringify(userData));
+  showToast("Password updated successfully!");
+  document.getElementById("password-form").style.display = "none";
+}
+
+// Logout
+document.querySelector(".logout-btn").addEventListener("click", function() {
+  localStorage.removeItem("currentUser");
+  localStorage.setItem("toastMessage", "Logged out successfully!");
+  window.location.href = "login.html";
+});
+
+// On page load
+window.onload = function() {
+  loadUserProfile();
+  const message = localStorage.getItem("toastMessage");
+  if (message) {
+    showToast(message);
+    localStorage.removeItem("toastMessage");
+  }
+};
+</script>
+
+</body>
+</html>

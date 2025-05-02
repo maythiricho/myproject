@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+      main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  backdrop-filter: blur(4px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: hwb(204 15% 14%);
+}
+
+.about-header p {
+  font-size: 1.1rem;
+  color: #576574;
+  font-style: italic;
+}
+
+.about-section {
+  margin-bottom: 40px;
+}
+
+.about-section h2 {
+  font-size: 1.8rem;
+  color: hwb(204 15% 14%);
+  border-left: 5px solid hsl(333, 72%, 65%);
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+.about-section p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: #444;
+}
+.hero-banner img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-bottom: 5px solid #f8c291;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 700px;
+  display: block;
+  margin: 15px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.about-gallery {
+  margin-top: 50px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  height: 180px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+          <div class="logo-header">
+            <img
+              src="photos/main-logo.GIF"
+              style="width: 55px; height: 42px"
+              alt="Travel Logo"
+            />
+            <h3>Your Travel Bucket</h3>
+          </div>
+           <nav class="header-navabar">
+            <ul>
+              <a href="./index.html">Home</a>
+              <li><a href="../destination.html">Destinations</a></li>
+              <li><a href="./aboutus.html">About Us</a></li>
+              <li><a href="./contactus.html">Contact Us</a></li>
+            </ul>
+          </nav>
+          <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+    
+          </div>
+          <div class="topbar">
+            <img
+            id="avatar-img"
+              class="avatar-icon"
+              src="photos/default-avatar.png"
+              alt="Profile Picture"
+              onclick="toggleDropdown()"
+              style="width: 40px; height: 40px; border-radius: 50%; cursor: pointer; object-fit: cover;"
+            />
+  
+            <div class="dropdown" id="dropdownMenu">
+              <div class="dropdown-header">
+                <strong id="dropdown-username">Username</strong>
+                <small id="dropdown-email">Email</small>
+              </div>            
+              <a href="profile.html"
+                ><i class="fa-solid fa-user" style="color: #b197fc"></i>Your Profile</a
+              >
+              <a href="yourbucket.html"><i class="fa-solid fa-magnifying-glass" style="color: #f06292"></i>Your Bucket</a>
+              
+              <button class="logout-btn">Log Out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+           
+    <main>
+      <section class="hero-banner">
+        <img src="photos/aboutus-travel.gif" alt="Adventure Awaits" />
+      </section> 
+        <div class="about-header">
+            <h1>About Us</h1>
+            <p>"Discover our story and passion for travel"</p>
+        </div>
+        
+        <div class="about-section">
+            <h2>Our History</h2>
+            <img src="photos/aboutus-map.gif" alt="Timeline Map" class="about-image" />
+            <p>We started as a small travel group with a shared vision to make travel accessible, fun, and unforgettable. Over the years, we've built a network of like-minded travelers and curated exceptional travel experiences worldwide.</p>
+            <p>From humble beginnings, we've grown into a community that strives to bring adventure, culture, and joy to every traveler. Our journey continues as we evolve, offering new destinations, experiences, and ideas to explore.</p>
+        </div>
+        
+        <div class="about-section">
+            <h2>Our Purpose</h2>
+            <p>Our purpose is to help people find their dream destinations, plan unforgettable trips, and share their stories. We believe travel is one of the most transformative experiences, and we aim to make it accessible and enjoyable for everyone.</p>
+            <p>We are passionate about supporting travelers in every step of their journey, from discovering new places to planning their perfect adventure. Our goal is to inspire curiosity, create memories, and foster a love for exploration.</p>
+        </div>
+        <section class="about-gallery">
+            <h2 style="text-align: center;">A Glimpse of Our Journey</h2>
+            <div class="gallery-grid">
+              <img src="photos/team.gif" alt="Team at the Beach">
+              <img src="photos/hike.gif" alt="Mountain Hike">
+              <img src="photos/bonfire.gif" alt="Bonfire Night">
+            </div>
+          </section>          
+    </main>
+
+    <footer class="cute-footer">
+        <div class="footer-content">
+          <p>Made with ❤️ and too much ☕</p>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+          <p class="footer-bottom-text">
+            © 2025 Your Travel Bucket. Adventure awaits! 🚀
+          </p>
+        </div>
+      </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+  // --- Dropdown Profile ---
+  function toggleDropdown() {
+      document.getElementById("dropdownMenu").classList.toggle("active");
+    }
+
+    window.addEventListener("click", function (e) {
+      const dropdown = document.getElementById("dropdownMenu");
+      const avatar = document.querySelector(".avatar");
+      if (!dropdown.contains(e.target) && !avatar.contains(e.target)) {
+        dropdown.classList.remove("active");
+      }
+    });
+
+    // --- Hamburger Menu -- //
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".header-navabar");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    // --- Dropdown Menu ---
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("active");
+}
+
+window.addEventListener("click", function (e) {
+  const dropdown = document.getElementById("dropdownMenu");
+  const avatarImg = document.getElementById("avatar-img");
+if (!dropdown.contains(e.target) && !avatarImg.contains(e.target)) {
+  dropdown.classList.remove("active");
+}
+});
+
+// --- Load Logged In User Info ---
+function loadUserInfo() {
+  const username = localStorage.getItem("currentUser");
+  if (!username) {
+    window.location.href = "login.html"; // If no user, go to login
+    return;
+  }
+
+  const userData = localStorage.getItem(username);
+  const user = JSON.parse(userData);
+
+  document.getElementById("dropdown-username").innerText = username;
+  document.getElementById("dropdown-email").innerText = user.email;
+
+  const avatarImg = document.getElementById("avatar-img");
+  if (user.profilePic && avatarImg) {
+    avatarImg.src = user.profilePic; // Set profile picture!
+  }
+}
+
+// Call loadUserInfo() when page loads
+window.onload = function() {
+  loadUserInfo();
+};
+
+// --- Logout ---
+document.querySelector(".logout-btn").addEventListener("click", function() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
+});
+  </script>
+</html>

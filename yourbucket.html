@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Travel Bucket</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      /* --- Hero Section --- */
+
+      .hero1 {
+        background: linear-gradient(to bottom, #aee1f9, rgb(239, 240, 243));
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .hero1 h1 {
+        font-size: 2.5em;
+        color: #ffab91;
+        text-shadow: 2px 2px #f48fb1;
+        margin-bottom: 10px;
+      }
+
+      .hero1 p {
+        color: #81c784;
+        font-size: 1.2em;
+      }
+
+      /* --- Bucket List Sections --- */
+      .bucket-section1 {
+        max-width: 1000px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .bucket-section1 h2 {
+        color: #f48fb1;
+        /* Pink for section titles */
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      .bucket-list-item1 {
+        display: flex;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .bucket-list-item1:last-child {
+        border-bottom: none;
+      }
+
+      .item-details1 {
+        flex-grow: 1;
+      }
+
+      .item-details1 h3 {
+        margin-top: 0;
+        color: #4dd0e1;
+        /* Light blue for place names */
+      }
+
+      .button-group1 {
+        display: flex;
+        gap: 10px;
+      }
+
+      .remove-button1 {
+        background-color: #f48fb1;
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .remove-button1:hover {
+        background-color: #a0a9f0;
+      }
+
+      /* --- No Items Message --- */
+      .empty-message1 {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        font-style: italic;
+        color: #777;
+      }
+
+      /* --- Place Card Styles --- */
+      .place-grid1 {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding-bottom: 10px;
+      }
+
+      /* Customize scrollbar (Webkit - Chrome, Safari) */
+      .place-grid1::-webkit-scrollbar {
+        height: 8px; /* Height of the scrollbar */
+      }
+
+      .place-grid1::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Color of the tracking area */
+        border-radius: 10px;
+      }
+
+      .place-grid1::-webkit-scrollbar-thumb {
+        background: #a0a9f0; /* Color of the scrollbar handle */
+        border-radius: 10px;
+      }
+
+      .place-grid1::-webkit-scrollbar-thumb:hover {
+        background: #7d84d1; /* Color of the handle on hover */
+      }
+
+      /* Customize scrollbar (Firefox) */
+      .place-grid1 {
+        scrollbar-width: thin; /* "auto" or "thin" or "none" */
+        scrollbar-color: #a0a9f0 #f1f1f1; /* thumb track */
+      }
+
+      .place-card1 {
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+
+      .place-image1 {
+        height: 160px;
+        overflow: hidden;
+      }
+
+      .place-image1 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .place-info1 {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+
+      .card-header1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .card-title1 h3 {
+        margin: 0;
+        font-size: 1.2em;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .card-description1 {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      .tags1 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .place-tag1 {
+        background-color: #f0f0f0;
+        color: #333;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 0.75em;
+      }
+
+      .icon-container1 {
+        display: flex;
+        gap: 10px;
+      }
+
+      .save-icon1,
+      .check-icon1 {
+        cursor: pointer;
+        font-size: 1.2em;
+      }
+
+      .save-icon1.active i {
+        color: #f06292;
+      }
+
+      .check-icon1.active i {
+        color: #ffca28;
+      }
+
+      .bucket-actions1 {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .remove-btn1 {
+        background-color: #f48fb1;
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .remove-btn1:hover {
+        background-color: #a0a9f0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo-header">
+          <img
+            src="photos/main-logo.GIF"
+            style="width: 55px; height: 42px"
+            alt="Travel Logo"
+          />
+          <h3>Your Travel Bucket</h3>
+        </div>
+        <nav class="header-navabar">
+          <ul>
+            <a href="./index.html">Home</a>
+            <li><a href="destination.html">Destinations</a></li>
+            <li><a href="./aboutus.html">About Us</a></li>
+            <li><a href="./contactus.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="topbar">
+          <img
+            id="avatar-img"
+            class="avatar-icon"
+            src="photos/default-avatar.png"
+            alt="Profile Picture"
+            onclick="toggleDropdown()"
+            style="
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              cursor: pointer;
+              object-fit: cover;
+            "
+          />
+
+          <div class="dropdown" id="dropdownMenu">
+            <div class="dropdown-header">
+              <strong id="dropdown-username">Username</strong>
+              <small id="dropdown-email">Email</small>
+            </div>
+            <a href="profile.html"
+              ><i class="fa-solid fa-user" style="color: #b197fc"></i>Your
+              Profile</a
+            >
+            <a href="yourbucket.html"
+              ><i
+                class="fa-solid fa-magnifying-glass"
+                style="color: #f06292"
+              ></i
+              >Your Bucket</a
+            >
+
+            <button class="logout-btn">Log Out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero1">
+        <h1 class="fun-title1">
+          Your Travel Bucket List <span class="sparkle">✨</span>
+        </h1>
+        <p class="cute-tagline1">
+          Here are all the amazing places you've saved!
+        </p>
+      </section>
+
+      <div class="bucket-section1">
+        <h2 class="section-title1">Saved Locations</h2>
+        <div id="saved-locations" class="place-grid1">
+          <p class="empty-message1" id="empty-saved">
+            You have no saved locations yet.
+          </p>
+        </div>
+      </div>
+
+      <div class="bucket-section1">
+        <h2 class="section-title1">Visited Locations</h2>
+        <div id="visited-locations" class="place-grid1">
+          <p class="empty-message1" id="empty-visited">
+            You haven't marked any locations as visited yet.
+          </p>
+        </div>
+      </div>
+
+      <div class="bucket-section1">
+        <h2 class="section-title1">Both Saved and Visited</h2>
+        <div id="both-locations" class="place-grid1">
+          <p class="empty-message1" id="empty-both">
+            You have no locations that are both saved and visited yet.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="cute-footer">
+      <div class="footer-content">
+        <p>Made with ❤️ and too much ☕</p>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <p class="footer-bottom-text">
+          © 2025 Your Travel Bucket. Adventure awaits! 🚀
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleDropdown() {
+        document.getElementById("dropdownMenu").classList.toggle("active");
+      }
+
+      window.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("dropdownMenu");
+        const avatar = document.getElementById("avatar-img");
+        if (!dropdown.contains(e.target) && !avatar.contains(e.target)) {
+          dropdown.classList.remove("active");
+        }
+      });
+
+      // for current user profile
+      function loadUserInfo() {
+        const username = localStorage.getItem("currentUser");
+        if (!username) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        const userData = JSON.parse(localStorage.getItem(username));
+        if (!userData) return;
+
+        document.getElementById("dropdown-username").innerText = username;
+        document.getElementById("dropdown-email").innerText = userData.email;
+
+        if (userData.profilePic) {
+          document.getElementById("avatar-img").src = userData.profilePic;
+        }
+      }
+
+      document
+        .querySelector(".logout-btn")
+        .addEventListener("click", function () {
+          localStorage.removeItem("currentUser");
+          window.location.href = "login.html";
+        });
+
+      function renderBothDestinations(places) {
+        const bothContainer = document.getElementById("both-locations");
+        if (!bothContainer) return;
+
+        bothContainer.innerHTML = "";
+        const emptyMessage = document.getElementById("empty-both");
+        if (places.length === 0) {
+          emptyMessage.style.display = "block";
+        } else {
+          emptyMessage.style.display = "none";
+          places.forEach((place) => {
+            const card = createLocationCard(place);
+            bothContainer.appendChild(card);
+          });
+        }
+      }
+
+      function renderAllDestinations() {
+        const username = localStorage.getItem("currentUser");
+        const userData = JSON.parse(localStorage.getItem(username)) || {};
+        const savedPlaces = userData.savedPlaces || [];
+
+        console.log("All savedPlaces:", JSON.stringify(savedPlaces));
+
+        //  Exclusive Filtering:
+        const savedFiltered = savedPlaces.filter(
+          (place) => place.isLoved && !place.isDone
+        ); // Only Saved
+        const visitedFiltered = savedPlaces.filter(
+          (place) => place.isDone && !place.isLoved
+        ); // Only Visited
+        const bothFiltered = savedPlaces.filter(
+          (place) => place.isLoved && place.isDone
+        ); // Both
+
+        console.log("savedFiltered:", JSON.stringify(savedFiltered));
+        console.log("visitedFiltered:", JSON.stringify(visitedFiltered));
+        console.log("bothFiltered:", JSON.stringify(bothFiltered));
+
+        renderSavedDestinations(savedFiltered);
+        renderVisitedDestinations(visitedFiltered);
+        renderBothDestinations(bothFiltered);
+      }
+
+      function renderBothDestinations(places) {
+        const bothContainer = document.getElementById("both-locations");
+        if (!bothContainer) return;
+
+        bothContainer.innerHTML = "";
+
+        if (places.length === 0) {
+          bothContainer.innerHTML =
+            "<p class='empty-message1'>You have no locations that are both saved and visited yet.</p>";
+        } else {
+          places.forEach((place) => {
+            const card = createLocationCard(place);
+            bothContainer.appendChild(card);
+          });
+        }
+      }
+
+      function renderVisitedDestinations(places) {
+        const visitedContainer = document.getElementById("visited-locations");
+        if (!visitedContainer) return;
+
+        visitedContainer.innerHTML = "";
+
+        if (places.length === 0) {
+          visitedContainer.innerHTML =
+            "<p class='empty-message1'>You haven't marked any locations as visited yet.</p>";
+        } else {
+          places.forEach((place) => {
+            const card = createLocationCard(place);
+            visitedContainer.appendChild(card);
+          });
+        }
+      }
+
+      function renderSavedDestinations(places) {
+        const savedContainer = document.getElementById("saved-locations");
+        if (!savedContainer) return;
+
+        savedContainer.innerHTML = "";
+
+        if (places.length === 0) {
+          savedContainer.innerHTML =
+            "<p class='empty-message'>You have no saved locations yet.</p>";
+        } else {
+          places.forEach((place) => {
+            const card = createLocationCard(place);
+            savedContainer.appendChild(card);
+          });
+        }
+      }
+      
+
+      function createLocationCard(place) {
+        const card = document.createElement("div");
+        card.className = "place-card1";
+
+        let icons = "";
+        if (place.isLoved) {
+          icons += `<i class="fa-solid fa-heart" style="color:#f06292; margin-right: 10px;"></i>`;
+        }
+        if (place.isDone) {
+          icons += `<i class="fa-solid fa-square-check" style="color:#ffca28;"></i>`;
+        }
+
+        card.innerHTML = `
+                <div class="place-image1">
+                  <img src="${place.image}" alt="${place.name}" />
+                </div>
+                <div class="place-info1">
+                  <div class="card-header1">
+                    <div class="card-title1">
+                      <h3>${place.name}</h3>
+                    </div>
+                    <div class="icon-container1">
+                      ${icons}
+                    </div>
+                  </div>
+                   <p class="card-description1">Beach vibes, blue oceans, and paradise.</p>
+                  <div class="tags1">
+                    ${place.tags
+                      .map((tag) => `<span class="place-tag1">${tag}</span>`)
+                      .join("")}
+                  </div>
+                  <div class="bucket-actions1">
+                    <button class="remove-btn1" onclick="removeFromBucket('${
+                      place.name
+                    }', ${place.isLoved}, ${place.isDone})">Remove</button>
+                  </div>
+                </div>
+              `;
+
+        return card;
+      }
+
+      function removeFromBucket(placeName, isLoved, isDone) {
+        const username = localStorage.getItem("currentUser");
+        const userData = JSON.parse(localStorage.getItem(username)) || {};
+        let savedPlaces =
+          JSON.parse(JSON.stringify(userData.savedPlaces)) || [];
+
+        // Filter out the place to remove
+        savedPlaces = savedPlaces.filter(
+          (place) =>
+            !(
+              place.name === placeName &&
+              place.isLoved === isLoved &&
+              place.isDone === isDone
+            )
+        );
+        userData.savedPlaces = savedPlaces;
+        localStorage.setItem(username, JSON.stringify(userData));
+
+        // Re-render all places
+        renderAllDestinations();
+      }
+
+      window.onload = () => {
+        loadUserInfo();
+        renderAllDestinations();
+      };
+
+          // --- Dropdown Profile ---
+          function toggleDropdown() {
+        document.getElementById("dropdownMenu").classList.toggle("active");
+      }
+
+      window.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("dropdownMenu");
+        const avatar = document.querySelector(".avatar");
+        if (!dropdown.contains(e.target) && !avatar.contains(e.target)) {
+          dropdown.classList.remove("active");
+        }
+      });
+       // --- Hamburger Menu -- //
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".header-navabar");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+    </script>
+  </body>
+</html>
